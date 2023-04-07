@@ -14,7 +14,7 @@ services:
       - db:/var/lib/mysql
   cube:
     build:
-      context: ./serviceSquare
+      context: ./serviceCube
       dockerfile: Dockerfile
     ports:
       - 8080:9090
