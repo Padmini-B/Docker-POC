@@ -12,9 +12,9 @@ services:
       - 33067:33067
     volumes:
       - db:/var/lib/mysql
-  fibonacci:
+  cube:
     build:
-      context: ./serviceFibonacci
+      context: ./serviceSquare
       dockerfile: Dockerfile
     ports:
       - 8080:9090
