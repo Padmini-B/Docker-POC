@@ -6,8 +6,10 @@ services:
     image: mysql:5.6
     restart: always
     environment:
-      MYSQL_DATABASE: docker_db
-      MYSQL_ROOT_PASSWORD: root
+      - MYSQL_DATABASE=docker_db
+      - MYSQL_USER=root
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=docker_db
     ports:
       - 33067:33067
     volumes:
@@ -18,11 +20,6 @@ services:
       dockerfile: Dockerfile
     ports:
       - 8080:9090
-    environment:
-      - DB_HOST=mysqldb
-      - DB_NAME=docker_db
-      - DB_USER=root
-      - DB_PASSWORD=root
     depends_on:
       - mysql_db
 volumes:
