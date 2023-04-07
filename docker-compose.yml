@@ -3,7 +3,7 @@ version: "3"
 services:
   mysql_db:
     container_name: mysql_db
-    image: mysql:5.6
+    image: mysql:latest
     restart: always
     environment:
       - MYSQL_DATABASE=docker_db
@@ -21,7 +21,7 @@ services:
     ports:
       - 8080:9090
     environment:
-      - SPRING_DATASOURCE_URL= jdbc:mysql://mysql_db:3306/database?autoReconnect=docker_db&useSSL=false
+      - SPRING_DATASOURCE_URL= jdbc:mysql://mysql_db:3306/docker_db?autoReconnect=docker_db&useSSL=false
     depends_on:
       - mysql_db
 volumes:
