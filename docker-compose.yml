@@ -11,7 +11,7 @@ services:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=docker_db
     ports:
-      - 33067:33067
+      - 3307:3306
     volumes:
       - db:/var/lib/mysql
   cube:
