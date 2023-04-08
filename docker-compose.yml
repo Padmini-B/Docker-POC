@@ -26,6 +26,11 @@ services:
       - 8080:9090
     networks:
       - spring-mysql
+    environment:
+      - MYSQL_HOST=mysql_db
+      - MYSQL_PORT=3306
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=password
 volumes:
   db:
 networks:
