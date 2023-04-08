@@ -16,21 +16,6 @@ services:
       - MYSQL_PASSWORD=password
     volumes:
       - db:/var/lib/mysql
-  cube:
-    depends_on:
-      - mysql_db
-    build:
-      context: ./serviceCube
-      dockerfile: Dockerfile
-    ports:
-      - 8080:9090
-    networks:
-      - spring-mysql
-    environment:
-      - MYSQL_HOST=mysql_db
-      - MYSQL_PORT=3306
-      - MYSQL_USER=root
-      - MYSQL_PASSWORD=password
 volumes:
   db:
 networks:
