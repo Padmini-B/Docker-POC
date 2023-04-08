@@ -22,5 +22,6 @@ services:
       dockerfile: Dockerfile
     ports:
       - 8080:9090
+    command: sh -c './wait-for mysql_db:3306 -- npm start'
 volumes:
   db:
