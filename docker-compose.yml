@@ -1,9 +1,5 @@
 version: "3"
 
-volumes:
-  db:
-networks:
-  spring-mysql:
 services:
   mysql_db:
     container_name: mysql_db
@@ -20,3 +16,7 @@ services:
       - MYSQL_PASSWORD=password
     volumes:
       - db:/var/lib/mysql
+volumes:
+  db:
+networks:
+  spring-mysql:
