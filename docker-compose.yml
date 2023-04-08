@@ -7,8 +7,6 @@ services:
     restart: always
     ports:
       - 3307:3306
-    networks:
-      - spring-mysql
     environment:
       - MYSQL_DATABASE=docker_db
       - MYSQL_ROOT_PASSWORD=password
@@ -16,7 +14,70 @@ services:
       - MYSQL_PASSWORD=password
     volumes:
       - db:/var/lib/mysql
+ ui:
+    build:
+      context: ./serviceUI
+      dockerfile: Dockerfile
+    ports:
+      - 5000:8000
+    environment:
+      - MYSQL_HOST=mysql_db
+      - MYSQL_PORT=3306
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=password
+    depends_on:
+      - mysql_db
+ square:
+    build:
+      context: ./serviceSquare
+      dockerfile: Dockerfile
+    ports:
+      - 8080:9090
+    environment:
+      - MYSQL_HOST=mysql_db
+      - MYSQL_PORT=3306
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=password
+    depends_on:
+      - mysql_db
+ cube:
+    build:
+      context: ./serviceCube
+      dockerfile: Dockerfile
+    ports:
+      - 8181:9191
+    environment:
+      - MYSQL_HOST=mysql_db
+      - MYSQL_PORT=3306
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=password
+    depends_on:
+      - mysql_db
+ fibonacci:
+    build:
+      context: ./serviceFibonacci
+      dockerfile: Dockerfile
+    ports:
+      - 8282:9292
+    environment:
+      - MYSQL_HOST=mysql_db
+      - MYSQL_PORT=3306
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=password
+    depends_on:
+      - mysql_db
+  metrics:
+    build:
+      context: ./serviceMetrics
+      dockerfile: Dockerfile
+    ports:
+      - 8383:9393
+    environment:
+      - MYSQL_HOST=mysql_db
+      - MYSQL_PORT=3306
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=password
+    depends_on:
+      - mysql_db
 volumes:
   db:
-networks:
-  spring-mysql:
