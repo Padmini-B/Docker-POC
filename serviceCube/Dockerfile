@@ -8,5 +8,5 @@ COPY src src
 
 RUN chmod +x mvnw
 RUN ./mvnw package
-CMD target/*.jar cube-docker.jar 
-ENTRYPOINT ["java","-jar","/cube-docker.jar"]
+ADD target/*.jar cube-docker.jar 
+CMD ["java","-jar","/cube-docker.jar"]
