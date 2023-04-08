@@ -3,7 +3,7 @@ version: "3"
 services:
   mysql_db:
     container_name: mysql_db
-    image: mysql:latest
+    image: mysql:5.7
     restart: always
     environment:
       - MYSQL_DATABASE=docker_db
