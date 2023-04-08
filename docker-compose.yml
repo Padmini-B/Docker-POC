@@ -26,6 +26,7 @@ services:
       - 8080:9090
     environment:
       - SPRING_DATASOURCE_URL=jdbc:mysql://mysql_db:3306/docker_db?autoReconnect=docker_db&useSSL=false
+      - MYSQL_HOST=mysql_db
     depends_on:
       - mysql_db
 volumes:
