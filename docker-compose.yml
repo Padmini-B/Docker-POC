@@ -15,7 +15,7 @@ services:
     volumes:
       - db:/var/lib/mysql
  square:
-    container_name: square-docker
+    container_name: 'square-docker'
     image: 'paddub/square-docker'
     ports:
       - 8080:9090
