@@ -10,5 +10,5 @@ RUN ./mvnw package
 COPY target/*.jar cube-docker.jar
 
 FROM openjdk:17
-COPY --from=buildstage /cube-docker/cube-docker.jar
+COPY --from=buildstage /cube-docker/cube-docker.jar .
 ENTRYPOINT ["java","-jar","/cube-docker.jar"]
