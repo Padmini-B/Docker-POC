@@ -1,12 +1,14 @@
-FROM openjdk:17
+FROM openjdk:17 as buildstage
 WORKDIR /cube-docker
 
 COPY mvnw .
 COPY .mvn .mvn
 COPY pom.xml .
 COPY src src
-
 RUN chmod +x mvnw
 RUN ./mvnw package
-ADD target/*.jar cube-docker.jar 
-CMD ["java","-jar","/cube-docker.jar"]
+COPY target/*.jar cube-docker.jar
+
+FROM openjdk:17
+COPY --from=buildstage /cube-docker/cube-docker.jar
+ENTRYPOINT ["java","-jar","/cube-docker.jar"]
